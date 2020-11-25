@@ -91,8 +91,9 @@ export class SideBarComponent implements OnInit {
       if (e.data && e.data.length) {
         e.count = e.data.reduce((f, p) => {
           if (p.unread) {
-            return f + 1;
+             ++f;
           }
+          return f;
         }, 0);
       } else {
         e.count = 0;
