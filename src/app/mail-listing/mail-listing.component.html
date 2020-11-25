@@ -1,0 +1,31 @@
+<div *ngIf="data.length; else noData">
+    <div>
+        Filter Flagged Emails here: <span (click)="flag = !flag; $event.stopPropagation()" style="float: right;"><img src="./../../assets/img/flag.png" height="16px" width="16px" 
+            [ngStyle]="{'opacity': flag ? 1 : 0.2 }" /></span>
+    </div>
+    <article [ngClass]="{'selected': !item.unread }" (click)="onEmailItemClick(item)"
+    *ngFor="let item of data | filter:flag" style="padding: 0; float: left; width: 100%;">
+       <div>
+        <div style="height: 68px; float: left;"  [ngStyle]="{'background-color': !item.unread ? 'white' : 'blue' }">
+            &nbsp;
+        </div>
+        <div style="float: left; width: 96.5%; margin: 0 0 0 5px;">
+            <div>
+                <span>{{item.sender && item.sender.length > 20 ? item.sender.substr(0, 20).concat('...') : item.sender }}</span>
+                <span (click)="item.flagged = !item.flagged; $event.stopPropagation()" style="float: right; margin: 3px;">
+                    <img src="./../../assets/img/flag.png" height="16px" width="16px" [ngStyle]="{'opacity': item.flagged ? 1 : 0.2 }" /></span>
+                <span (click)="deleteMail(item); $event.stopPropagation()" style="float: right; margin: 3px;">
+                    <img src="./../../assets/img/delete-icon.jpg" height="16px" width="16px" /></span>
+            </div>
+            <div style="float: left; width: 100%"><b style="float: left; width: 87%;">{{item.subject}}</b> <span style="float: left; font-size: 12px;">{{item.time}}</span></div>
+            <div style="font-size: 14px; clear: both;">{{item.content && item.content.length > 30 ? item.content.substr(0, 30).concat('...') : item.content }}</div>
+        </div>
+       </div>
+    </article>
+</div>
+
+<ng-template #noData>
+    <div style="float: left; width: 95%; padding: 25px 0 0 25px;">
+        No e-mails in this section
+    </div>
+</ng-template>

@@ -1,0 +1,9 @@
+<div>
+    <ul style="list-style: none;padding: 15px; margin: 0;">
+        <li [ngStyle]="{'background': item.selected ? 'pink' : 'white', 'font-weight': item.selected ? 'bold' : '100'}" 
+        *ngFor="let item of sideBarData" style="padding: 3px 0; float: left; width: 100%; cursor: pointer;">
+            <span (click)="setisting(item.name)" style="float: left; width: 90%;">{{item.name}}</span> 
+            <span style="float: right;">{{item.count}}</span>
+        </li>
+    </ul>
+</div>

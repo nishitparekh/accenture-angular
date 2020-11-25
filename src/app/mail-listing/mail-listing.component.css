@@ -1,0 +1,14 @@
+
+  article {
+     color: blue;
+     border: 1px solid DimGray;
+     padding: 5px;
+     cursor: pointer;
+     margin-bottom: 5px;
+   }
+
+   article.selected {
+    color: DarkGray;
+    cursor: pointer;
+    margin-bottom: 10px;
+  }

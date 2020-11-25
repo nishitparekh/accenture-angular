@@ -1,0 +1,11 @@
+<div *ngIf="emailContent; else noData" style="padding: 20px;">
+    <div>{{emailContent.subject}}</div>
+    <br> <br>
+    <div>{{emailContent.content}}</div>
+</div>
+
+<ng-template #noData>
+    <div style="float: left; padding: 25px 0 0 25px;;">
+        <p>Select an item to read</p>
+    </div>
+</ng-template>
